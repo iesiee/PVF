@@ -8,5 +8,6 @@ Description: Forecast of power and ramps produced by grid-connected PV systems
 URL: http://github.com/oscarperpinan/PVF
 BugReports: https://github.com/oscarperpinan/PVF/issues
 License: GPL-3
-Imports: sp, raster, zoo, xts, meteoForecast, quantregForest, solaR, parallel, gstat, rgdal, lattice, latticeExtra
+Depends: quantregForest
+Imports: sp, raster, zoo, xts, meteoForecast, solaR, parallel, gstat, rgdal, lattice, latticeExtra
 Suggests: rasterVis
