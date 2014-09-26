@@ -31,8 +31,7 @@ importFrom(solaR,
 importFrom(gstat,
            idw)
 
-importFrom(quantregForest,
-           quantregForest)
+import(quantregForest)
 
 importFrom(zoo,
            zoo,
