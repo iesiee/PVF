@@ -1,0 +1,24 @@
+import(lattice,
+       latticeExtra,
+       gstat,
+       rgdal,
+       raster,
+       rasterVis,
+       zoo,
+       xts,
+       quantregForest,
+       solaR,
+       parallel,
+       meteoForecast)
+
+export(
+    'extractForecast',
+    'plotQR',
+    'predictGoal',
+    'predictOneDay',
+    'predVarsLocal',
+    'rfPredict',
+    'rfScenario',
+    'scenarioSet',
+    'targetDiagram'
+    )

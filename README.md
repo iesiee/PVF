@@ -1,4 +1,4 @@
 PVF
 ===
 
-Forecast of AC Power produced by Photovoltaic Systems
+Forecast of power and ramps produced by grid-connected PV systems
