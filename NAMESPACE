@@ -1,16 +1,54 @@
-import(lattice,
-       latticeExtra,
-       gstat,
-       rgdal,
+##################################################################
+## IMPORTs
+##################################################################
+
+import(sp,
        raster,
-       rasterVis,
-       zoo,
-       xts,
-       quantregForest,
-       solaR,
-       parallel,
+       rgdal,
        meteoForecast)
 
+importFrom(lattice,
+           xyplot,
+           panel.polygon,
+           panel.abline,
+           panel.xyplot,
+           panel.text,
+           xscale.components.default,
+           yscale.components.default
+           )
+
+importFrom(latticeExtra,
+           custom.theme.2,
+           layer, layer_
+           )
+
+importFrom(solaR,
+           as.zooI,
+           calcSol,
+           local2Solar
+           )
+
+importFrom(gstat,
+           idw)
+
+importFrom(quantregForest,
+           quantregForest)
+
+importFrom(zoo,
+           zoo,
+           as.zoo,
+           index
+           )
+
+importFrom(xts,
+           as.xts)
+           
+importFrom(parallel,
+           mclapply)
+
+##################################################################
+## EXPORT
+##################################################################
 export(
     'extractForecast',
     'plotQR',

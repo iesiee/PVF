@@ -1,3 +1,7 @@
+## Needed to pass R CMD check without notes due to the use
+## latticeExtra::layer
+if(getRversion() >= "2.15.1")  utils::globalVariables(c("q1", "q9"))
+
 plotQR <- function(z, vrbl='ground', col=c('black', 'red'),...){
     if (is.null(vrbl)){
         p <- xyplot(z[,'q5'],

@@ -1,5 +1,13 @@
-## `data` must include these columns: nrmse, nmbe, sdm, sdo, KTclass and Scn.
-PVFTheme <- rasterTheme(symbol = brewer.pal(n=8, name = "Dark2"))
+PVFTheme <- function(pch=19, cex=0.7,
+                     symbol = brewer.pal(n=8, name = "Dark2"),
+                     ...){
+  theme <- custom.theme.2(pch=pch, cex=cex, ...)
+  theme$strip.background$col='transparent'
+  theme$strip.shingle$col='transparent'
+  theme$strip.border$col='transparent'
+  theme$add.line$lwd=.4
+  theme
+}
 
 xscale.pvf <- function(...){
   ans <- xscale.components.default(...)
@@ -11,7 +19,7 @@ yscale.pvf <- function(...){
   ans$right=FALSE
   ans}
 
-
+## `data` must include these columns: nrmse, nmbe, sdm, sdo, KTclass and Scn.
 targetDiagram <- function(data, class = 'KTclass', groups = 'Scn',
                           par.settings = PVFTheme,
                           xscale.components = xscale.pvf,
