@@ -51,11 +51,15 @@ importFrom(parallel,
 export(
     'extractForecast',
     'plotQR',
-    'predictGoal',
-    'predictOneDay',
+    'predictPac',
     'predVarsLocal',
     'rfPredict',
     'rfScenario',
     'scenarioSet',
-    'targetDiagram'
+    'targetDiagram',
+    'stats',
+    'qqStats',
+    'hour',
+    'hourHalf',
+    'minute'
     )
