@@ -4,12 +4,11 @@
 ## interpolation, three terrain indexes (tri, tpi and rough) and one temporal
 ## index. This function uses parallel computing with mclapply.
 
-predVarsLocal <- function(point, seqDays, vrbls, src, remote, dataDir, mc.cores,...){
+predVarsLocal <- function(point, seqDays, vrbls, mc.cores=1,...){
   
   forecastList <- mclapply(vrbls, FUN=function(vrbl){
   
-                           forecast <- extractForecast(point, seqDays, vrbl,
-                                                       src, remote, dataDir,...)
+                           forecast <- extractForecast(point, seqDays, vrbl=vrbl,...)
                            names(forecast) <- paste(vrbl, names(forecast), sep='.')
                            return(forecast)
                            }, mc.cores=mc.cores)

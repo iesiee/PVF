@@ -4,8 +4,9 @@
 ## interpolation, three terrain indexes (tri, tpi and rough) and one
 ## temporal index.
 
-extractForecast <- function(point, seqDays, vrbl, src, remote, dataDir,...){
-
+extractForecast <- function(point, seqDays, vrbl,
+                            src='meteogalicia', remote=TRUE, dataDir='.',...){
+  
   fl <- lapply(seqDays, FUN=function(d){
     
     print(paste(d, vrbl, sep=' '))
