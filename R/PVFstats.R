@@ -33,7 +33,7 @@ r2 <- function(m, o) cor(m, o)^2
 
 
 ## Apply a collection of statistics with only one call
-stats <- function(m, o,
+PVFstats <- function(m, o,
                   functions = c('mo', 'mm', 'sdo', 'sdm',
                       'mbe', 'mae', 'rmse',
                       'nmbe', 'cvmbe',
