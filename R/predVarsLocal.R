@@ -6,12 +6,6 @@
 
 predVarsLocal <- function(point, seqDays, vrbls, mc.cores=1,...){
   
-  message(mc.cores)
-  
-  a<- mc.cores+1
-  
-  message(a)
-  
   message(class(mc.cores))
   
   forecastList <- mclapply(vrbls, FUN=function(vrbl){
