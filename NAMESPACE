@@ -57,7 +57,7 @@ export(
     'rfScenario',
     'scenarioSet',
     'targetDiagram',
-    'stats',
+    'PVFstats',
     'qqStats',
     'hour',
     'hourHalf',
