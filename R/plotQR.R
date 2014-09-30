@@ -23,7 +23,7 @@ plotQR <- function(z, vrbl = 'ground', col=c('black', 'red'),...){
     myData <- as.data.frame(z)
     myData$tt <- as.numeric(index(z))
     ly <- layer_({
-        qArea <- c(z$q1, rev(z$q9))  # (q1, rev(q9))
+        qArea <- c(q1, rev(q9))
         tt <- c(tt, rev(tt))
         panel.polygon(tt, qArea,
                       border='lightgray', col='lightgray')
