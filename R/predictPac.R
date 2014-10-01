@@ -25,7 +25,7 @@ predictPac <- function(goal, history, id, nDays, method, lat, lon,...){
                                 is not inside history date limits!!!')
     
     ## NWP variables
-    forecastTest <- predVarsLocal(point, seqDays=goal, vrbls,...)
+    forecastTest <- predVarsLocal(seqDays=goal,...)
     ## Sun geometry
     sol <- as.zooI(calcSol(lat=lat,
                            BTi=local2Solar(index(forecastTest), lon=lon)))
