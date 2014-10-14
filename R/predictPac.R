@@ -36,6 +36,9 @@ predictPac <- function(goal, history, id, nDays, method, lat, lon,...){
     valsTest <- merge(forecastTest, solH)
     ## Removing rows with NA values
     valsTest <- valsTest[apply(valsTest, 1, function(x)!any(is.na(x))),]
+    ## Adding the hourly clearness index
+    valsTest$kt <- valsTest$swflx.point/valsTest$Bo0
+    valsTest$kt[!is.finite(valsTest$kt)] <- 0
     
   }
   
