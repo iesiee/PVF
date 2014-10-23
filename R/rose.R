@@ -1,9 +1,16 @@
-dats <- data.frame(Q1 = runif(10, max = 0.2),
-                   Q5 = runif(10, min = 0.2, max = 0.6),
-                   Q9 = runif(10, min = 0.6, max = 1))
-rownames(dats) <- letters[1:nrow(dats)]
+library(rasterVis)
 
-roseDiagram <- function(x, ...){
+dats <- data.frame(Q1 = runif(12, min = 0.1, max = 0.2),
+                   Q5 = runif(12, min = 0.2, max = 0.6),
+                   Q9 = runif(12, min = 0.6, max = 1))
+
+#rownames(dats) <- letters[1:nrow(dats)]
+
+rownames(dats) <- c('nMBE','nMAE','nRMSE','R2-1','tStone',
+                    'difSUM','difMED','uQ1num','uQ1med',
+                    'uQ9num','uQ9med','var')
+
+roseDiagram <- function(dats, ...){
     nms <- rownames(dats)
     N <- nrow(dats)
     dats[N+1, ] <- dats[1,]
@@ -23,14 +30,14 @@ roseDiagram <- function(x, ...){
     circle$x <- with(circle, r * sin(theta))
     circle$y <- with(circle, r * cos(theta))
 
-    xyLim <- 1.1
+    xyLim <- 1.15
     xyNames <- cbind(0.95 * xyLim * cos(theta[-(N+1)]),
                      0.95 * xyLim * sin(theta[-(N+1)]))
 
     XY <- data.frame(x = X$values, y = Y$values, ind = X$ind)
 
     xyplot(y ~ x, data = XY, groups = ind,
-           xlim = c(-1, 1)*xyLim, ylim = c(-1, 1)*xyLim,
+           xlim = c(-1, 1)*xyLim*1.1, ylim = c(-1, 1)*xyLim*1.1,
            xlab = '', ylab = '',
            type = 'b', pch = 21, aspect = 'iso',
            scales=list(draw = FALSE),
@@ -45,7 +52,7 @@ roseDiagram <- function(x, ...){
                             lty = 2, type = 'l',
                             col = 'darkgrey')
                panel.text(c(0, .5, 1), 0, labels = c(0, .5, 1),
-                          pos = 1, cex = 0.6)
+                          pos = 1, cex = 1)
                ## Data
                panel.xyplot(...)
                ## Names of variables
