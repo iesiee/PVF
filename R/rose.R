@@ -5,6 +5,7 @@ roseDiagram <- function(formula, data, ...){
            xlab = '', ylab = '',
            type = 'b', pch = 21, aspect = 'iso',
            scales = list(draw = FALSE),
+           auto.key = list(space = 'right'),
            panel = function(x, y, ...){
                x <- factor(x)
                nms <- levels(x)
