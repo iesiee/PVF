@@ -1,4 +1,4 @@
-panel.rose <- function(x, y, type = 'b',...){
+panel.radar <- function(x, y, type = 'b',...){
     x <- factor(x)
     nms <- levels(x)
     N <- nlevels(x)
@@ -40,7 +40,7 @@ panel.rose <- function(x, y, type = 'b',...){
     panel.text(xyNames[,1], xyNames[,2], nms, cex = 0.8)
 }
 
-roseDiagram <- function(formula, data, ...){
+radarDiagram <- function(formula, data, ...){
 
     xyplot(formula, data = data, 
            xlim = c(-1, 1) * 1.2, ylim = c(-1, 1) * 1.2,
@@ -48,7 +48,7 @@ roseDiagram <- function(formula, data, ...){
            pch = 21, aspect = 'iso',
            scales = list(draw = FALSE),
            auto.key = list(space = 'right', points = FALSE, lines = TRUE),
-           panel = panel.rose,
+           panel = panel.radar,
            ...)
           
 }
