@@ -1,8 +1,9 @@
-## `data` must include these columns: nrmse, nmbe, sdm, sdo, KTclass and Scn.
+## `data` must include these columns: nrmse, nmbe, sdm, sdo, KTclass and scn.
 
-targetDiagram <- function(data, class = 'KTclass', groups = 'Scn', theme, ...){
+targetDiagram <- function(data, class = 'KTclass', groups = 'scn', theme, ...){
     ## Dismiss values of normalized RMSE above 1
-    data[data$nrmse > 1,] <- NA
+    data <- data[data$nrmse <= 1,]
+
     ## RMSEc and difSD according to Joliff et al.
     data$nrmsec <- with(data, sqrt(nrmse^2 - nmbe^2))
     data$difSD <- with(data, sdm - sdo)
