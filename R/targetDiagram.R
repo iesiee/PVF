@@ -1,6 +1,7 @@
-## `data` must include these columns: nrmse, nmbe, sdm, sdo, KTclass and scn.
+## `data` must include these columns: nrmse, nmbe, sdm, sdo
 
-targetDiagram <- function(data, class = 'KTclass', groups = 'scn', theme, ...){
+targetDiagram <- function(data, class = '', ...){
+    
     ## Dismiss values of normalized RMSE above 1
     data <- data[data$nrmse <= 1,]
 
@@ -16,13 +17,18 @@ targetDiagram <- function(data, class = 'KTclass', groups = 'scn', theme, ...){
     circle$y <- with(circle, r * cos(theta))
 
     ## Generate graphic
-    ff <- as.formula(paste('nmbe ~ nrmsec * sign(difSD) |', class))
-    xyplot(ff, groups = data[,groups],
-           data = data, circle = circle,
+    ff <- as.formula(paste('nmbe ~ nrmsec * sign(difSD)',
+                           ifelse(class == '', '', paste('|', class))
+                           )
+                     )
+
+    xyplot(ff, 
+           data = data,
+           circle = circle,
            xlab = expression("RMSEc"%.%"sign("*sigma^"*"*")"), 
            ylab = "MBE",
            aspect='iso', scales = list(x = list(draw = FALSE)),
-           par.settings = theme, auto.key = list(space = 'right'),
+           auto.key = list(space = 'right'),
            panel = function(..., circle){
                ## Vertical and Horizontal Axis
                panel.abline(h=0,v=0,lty=2,col='gray')
