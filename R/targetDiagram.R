@@ -1,6 +1,8 @@
 ## `data` must include these columns: nrmse, nmbe, sdm, sdo
 
-targetDiagram <- function(data, class = '', ...){
+targetDiagram <- function(data, class = '',
+                          auto.key = list(space = 'right'),
+                          ...){
     
     ## Dismiss values of normalized RMSE above 1
     data <- data[data$nrmse <= 1,]
@@ -28,7 +30,7 @@ targetDiagram <- function(data, class = '', ...){
            xlab = expression("RMSEc"%.%"sign("*sigma^"*"*")"), 
            ylab = "MBE",
            aspect='iso', scales = list(x = list(draw = FALSE)),
-           auto.key = list(space = 'right'),
+           auto.key = auto.key,
            panel = function(..., circle){
                ## Vertical and Horizontal Axis
                panel.abline(h=0,v=0,lty=2,col='gray')
