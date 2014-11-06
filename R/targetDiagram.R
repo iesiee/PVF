@@ -1,6 +1,8 @@
 ## `data` must include these columns: nrmse, nmbe, sdm, sdo
 
 targetDiagram <- function(data, class = '',
+                          xlab = expression("RMSEc"%.%"sign("*sigma^"*"*")"),
+                          ylab = 'MBE',
                           auto.key = list(space = 'right'),
                           ...){
     
@@ -27,8 +29,7 @@ targetDiagram <- function(data, class = '',
     xyplot(ff, 
            data = data,
            circle = circle,
-           xlab = expression("RMSEc"%.%"sign("*sigma^"*"*")"), 
-           ylab = "MBE",
+           xlab = xlab, ylab = ylab,
            aspect='iso', scales = list(x = list(draw = FALSE)),
            auto.key = auto.key,
            panel = function(..., circle){
