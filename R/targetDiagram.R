@@ -4,7 +4,8 @@ targetDiagram <- function(data, class = '',
                           xlab = expression("RMSEc"%.%"sign("*sigma^"*"*")"),
                           ylab = 'MBE',
                           auto.key = list(space = 'right'),
-                          scales = list(cex = 0.6),
+                          default.scales = list(cex = 0.6),
+                          scales = list(),
                           type = 'quantile', cuts = seq(0.25, 1, .25),
                           ...){
     
@@ -32,6 +33,7 @@ targetDiagram <- function(data, class = '',
                            ifelse(class == '', '', paste('|', class))
                            )
                      )
+    scales <- modifyList(default.scales, scales)
     
     xyplot(ff, 
            data = data,
@@ -39,7 +41,7 @@ targetDiagram <- function(data, class = '',
            xlab = xlab, ylab = ylab,
            aspect='iso', scales = scales,
            xlim = extendrange(circle$x),
-           ylim = extendrange(circle$y),
+           ylim = extendrange(circle$y, f = 0.1),
            auto.key = auto.key,
            panel = function(..., circle){
                ## Vertical and Horizontal Axis
@@ -51,7 +53,8 @@ targetDiagram <- function(data, class = '',
                             lwd = 0.6, type = 'l', col = 'darkgrey')
                ## Labels of circles
                panel.text(0, -radius, labels = signif(radius, 2),
-                          pos = 1, cex = scales$cex)
+                          pos = 1, offset = 0.05,
+                          cex = scales$cex)
            }, ...)
 
 }
