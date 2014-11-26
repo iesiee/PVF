@@ -2,34 +2,53 @@
 \alias{radarDiagram}
 
 \title{
-Radar Diagram
+Radar Diagrams
 }
 \description{
-Radar Diagram
+Summary diagrams
 }
 \usage{
-radarDiagram(formula, data, ...)
-}
 
+radarDiagram(formula, data,
+             auto.key = list(space = "right",
+                             points = FALSE,
+                             lines = TRUE),
+             ...) 
+
+}
 \arguments{
-  \item{formula}{}
-  \item{data}{}
-
-
-  \item{\dots}{}
+  \item{data}{A \code{data.frame}
 }
-\details{
+  \item{auto.key}{}
+  \item{\dots}{
+}
+}
 
+\details{
+%%  ~~ If necessary, more details than the description above ~~
 }
 \value{
- trellis object
+%%  ~Describe the value returned
+%%  If it is a LIST, use
+%%  \item{comp1 }{Description of 'comp1'}
+%%  \item{comp2 }{Description of 'comp2'}
+%% ...
 }
-
+\references{
+%% ~put references to the literature/web site here ~
+}
 \author{
-Oscar Perpiñán Lamigueiro
+%%  ~~who you are~~
+}
+\note{
+%%  ~~further notes~~
 }
 
+%% ~Make other sections like Warning with \section{Warning }{....} ~
 
+\seealso{
+%% ~~objects to See Also as \code{\link{help}}, ~~~
+}
 \examples{
 dats <- data.frame(Q1 = runif(12, min = 0.1, max = 0.2),
                    Q5 = runif(12, min = 0.2, max = 0.6),
@@ -42,4 +61,7 @@ dats <- melt(dats, id = 'var', variable.name = 'Q')
 radarDiagram(value ~ var|Q, data = dats)
 
 }
-
+% Add one or more standard keywords, see file 'KEYWORDS' in the
+% R documentation directory.
+\keyword{ ~kwd1 }
+\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

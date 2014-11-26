@@ -1,79 +1,55 @@
 \name{rfPredict}
 \alias{rfPredict}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
+\encoding{UTF-8}
+
+
 \title{
-rfPredict
+Quantile Regression Forests used for forecasting
 }
 \description{
-rfPredict
+Returns the quantiles (0.1, 0.5, and 0.9) prediction of a variable with
+past values of several predictors included in a time series used as
+input for training. This function uses Quantile Regression Forests to
+produce the quantile prediction.
+
 }
 \usage{
 rfPredict(test, history, nDays)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
-  \item{test}{
-%%     ~~Describe \code{test} here~~
+  \item{test}{A \code{zoo} object, a time series including the same
+  predictors as in the \code{history} time series. The prediction will
+  have the same time index as this object.
 }
-  \item{history}{
-%%     ~~Describe \code{history} here~~
+  \item{history}{A \code{zoo} object, a time series including historic
+  values of the variable to predict (first column of the object), and past values of the same
+  predictors included in the \code{test} object.
 }
-  \item{nDays}{
-%%     ~~Describe \code{nDays} here~~
+  \item{nDays}{numeric. The prediction is computed using a train set of
+  N days from \code{history} located before the \code{test} 
+  day. When \code{nDays = 0}, prediction is computed using all the days
+  from history, excluding the \code{test} day. When nDays='all',
+  prediction is computed using all the days from \code{history}
+  including the \code{test} day.
 }
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
-}
-\author{
-%%  ~~who you are~~
-}
-\note{
-%%  ~~further notes~~
 }
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
+\value{
+A \code{zoo} object, a time series, with a column for each quantile prediction,
+named \code{q1}, \code{q5}, and \code{q9}. The time index is the same as
+the \code{test} object.
+}
+
+\author{
+Marcelo Pinho Almeida and Oscar Perpiñán Lamigueiro
+}
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+  \code{\link{quantregForest}}
+  \code{\link{predict.quantregForest}}
+  \code{\link{zoo}}
 }
-\examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 
-## The function is currently defined as
-function (test, history, nDays) 
-{
-    n <- as.character(nDays)
-    switch(n, `0` = {
-        train <- history[which(!(index(history) \%in\% index(test))), 
-            ]
-    }, all = {
-        train <- history
-    }, {
-        d <- unique(as.Date(index(test)))[1]
-        train <- window(history, start = as.POSIXct(d - nDays) + 
-            3600, end = as.POSIXct(d))
-    })
-    qrfModelH <- quantregForest(train[, -1], as.numeric(train[, 
-        1]))
-    qrfPredH <- predict(qrfModelH, test)
-    colnames(qrfPredH) <- c("q1", "q5", "q9")
-    qrfPredH <- zoo(qrfPredH, index(test))
-  }
-}
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\examples{}

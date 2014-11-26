@@ -1,11 +1,3 @@
-## Returns q1, q5 and q9 for the variable corresponding to the first
-## column of 'history', using 'test' as input. If nDays=N, prediction is
-## computed using a train set of N days from 'history' before the test
-## day (the number of days before the test day must be >= N). When
-## nDays=0, prediction is computed using all the days from history,
-## but the test day. When nDays='all', prediction is computed using all
-## the days from history.
-
 rfPredict <- function(test, history, nDays){
   ## 'test' contains only the predictor set
   ## 'history' contains the predictor set and the output variable in the first column

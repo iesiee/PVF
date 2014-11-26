@@ -1,58 +1,42 @@
 \name{plotQR}
 \alias{plotQR}
+\encoding{UTF-8}
 
 \title{
 plotQR
 }
+
 \description{
 plotQR
 }
+
 \usage{
-plotQR(z, vrbl = "ground", col = c("black", "red"), ...)
+plotQR(z, vrbl = NULL, col = c("black", "red"), ...)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
-  \item{z}{
-%%     ~~Describe \code{z} here~~
+
+  \item{z}{A \code{zoo} time series, including three columns, 'q1',
+    'q5', and 'q9', and the variable defined by \code{vrbl} if it is not \code{NULL}. The band comprised between the quantiles Q1 and Q9 is
+    displayed with a gray band, and the quantile Q5 and the variable
+    with lines of different colors.}
+
+  \item{vrbl}{Character, name of a column included in \code{z}}
+
+  \item{col}{Character, colors of lines representing the quantile 0.5
+    (default is black), and of the variable defined by \code{vrbl} (default is red).}
+
+  \item{\dots}{Additional arguments for \code{\link{xyplot}}}
+
 }
-  \item{vrbl}{
-%%     ~~Describe \code{vrbl} here~~
-}
-  \item{col}{
-%%     ~~Describe \code{col} here~~
-}
-  \item{\dots}{
-%%     ~~Describe \code{\dots} here~~
-}
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
+
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+A trellis object.
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
+
 \author{
-%%  ~~who you are~~
-}
-\note{
-%%  ~~further notes~~
+Oscar Perpiñán Lamigueiro and Marcelo Pinho Almeida.
 }
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
 \examples{
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

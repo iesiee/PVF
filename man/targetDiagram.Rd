@@ -1,68 +1,70 @@
 \name{targetDiagram}
 \alias{targetDiagram}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{
-targetDiagram
+Target Diagrams
 }
 \description{
-targetDiagram
+Summary diagrams
 }
 \usage{
-targetDiagram(data, class = "KTclass", groups = "Scn",
-              par.settings = PVFTheme,
-              xscale.components = xscale.pvf,
-              yscale.components = yscale.pvf,
-              ...)
+
+targetDiagram(data, class = "",
+              xlab = expression("RMSEc" \%.\% "sign(" * sigma^"*" * ")"),
+              ylab = "MBE",
+              auto.key = list(space = "right"),
+              default.scales = list(cex = 0.6),
+              scales = list(),
+              type = "quantile",
+              cuts = seq(0.25, 1, 0.25), ...)
+
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{data}{
-%%     ~~Describe \code{data} here~~
-}
-  \item{class}{
-%%     ~~Describe \code{class} here~~
-}
-  \item{groups}{
-%%     ~~Describe \code{groups} here~~
-}
-  \item{par.settings}{
-%%     ~~Describe \code{theme} here~~
-}
-  \item{xscale.components, yscale.components}{
-%%     ~~Describe \code{theme} here~~
-}
-\item{\dots}{
-%%     ~~Describe \code{\dots} here~~
-}
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
-}
-\author{
-%%  ~~who you are~~
-}
-\note{
-%%  ~~further notes~~
+
+  \item{data}{A \code{data.frame} with these columns: nrmse (Root Mean
+    Square Error), nmbe (Mean Bias Error), sdm (Standard Deviation of
+    the model), sdo (Standard Deviation of observations)}
+
+  \item{class}{Character, the name of the variable that defines the
+    panels of a trellis graphic.}
+  
+  \item{xlab, ylab}{Character or expression, define the axis labels.}
+
+  \item{auto.key, default.scales, scales}{Legend and scales
+    customization. Read the \code{\link{xyplot}} and
+    \code{\link{panel.xyplot}} help pages for details.}
+  
+  \item{type}{Character, defines the type of cuts between 'quantile' and 'at'.}
+
+  \item{cuts}{Numeric, defines the radius of the RMSE circles. If \code{type = 'quantile'} it defines the
+    probabilities with values between 0 and 1, and the radius are such
+    that the circles are the corresponding quantile. If \code{type =
+      'at'} \code{cuts} defines the radius of the circles.}
+  
+  \item{\dots}{Additional arguments for \code{\link{xyplot}}}
+
 }
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
+\details{
+TODO
+}
+
+\value{
+A trellis object.
+}
+
+\references{
+TODO: paper
+}
+
+\author{
+Oscar Perpiñán Lamigueiro
+}
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+  \code{\link{xyplot}}
+  \code{\link{radarDiagram}}
 }
+
 \examples{
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

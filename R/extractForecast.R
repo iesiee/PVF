@@ -1,15 +1,11 @@
-## Build a time series with one WRF variable (vrbl) from a specified
-## source (src) for a time period (seqDays) at a defined location (point).
-## The variable is quantified with the value at the location, the IDW
-## interpolation, three terrain indexes (tri, tpi and rough) and one
-## temporal index.
-
 extractForecast <- function(point, seqDays, vrbl,
-                            src='meteogalicia', remote=TRUE, dataDir='.',...){
+                            src = 'meteogalicia',
+                            remote = TRUE, dataDir = '.',
+                            ...){
   
   fl <- lapply(seqDays, FUN=function(d){
     
-    print(paste(d, vrbl, sep=' '))
+    message(paste(d, vrbl, sep=' '))
     
     ### Extract forecast using only the first frames from each run
     forecastDay <- try(getRasterDays(var = vrbl, start = d, end = d, remote = remote,
