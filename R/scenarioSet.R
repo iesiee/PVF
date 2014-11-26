@@ -18,7 +18,10 @@ scenarioSet <- function(id, vals){
               S14 = 'Pac|point|idw|Bo0|AzS|AlS',
               S15 = 'Pac|temp.point|temp.idw|Bo0|AzS|AlS',
               S16 = 'Pac|point|idw|Bo0|AzS|AlS|kt',
-              S17 = 'Pac|point|idw|kt')
+              S17 = 'Pac|point|idw|kt',
+              S18 = 'Pac|swflx.point|swflx.idw|temp.point|temp.idw|Bo0|AzS|AlS',
+              S19 = 'Pac|swflx.point|swflx.idw|temp.point|temp.idw',
+              S20 = 'Pac|Bo0|AzS|AlS')
   
   colsOut <- c(S01 = NA,
                S02 = 'AzS|AlS|Bo0|kt',
@@ -36,7 +39,10 @@ scenarioSet <- function(id, vals){
                S14 = 'swflx|cfl|cfm|cfh|u|v|dir|visibility|mslp',
                S15 = NA,
                S16 = 'cfl|cfm|cfh|cft|u|v|dir|visibility|mslp',
-               S17 = 'cfl|cfm|cfh|cft|u|v|dir|visibility|mslp')
+               S17 = 'cfl|cfm|cfh|cft|u|v|dir|visibility|mslp',
+               S18 = NA,
+               S19 = NA,
+               S20 = NA)
   
   nms <- names(vals)
   colsSet <- setdiff(grep(colsIn[id], nms), grep(colsOut[id], nms))
