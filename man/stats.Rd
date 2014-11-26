@@ -40,7 +40,7 @@ qqStats(x, q1, q9)
       \item{t of Stone: \code{tStone}}
       \item{R2: \code{r2}}
     }
-    There are additional functions that normalize the MBE, MAE and RMSE values. \code{nmbe}, \code{nmae}, and \code{nrmse} use the  observation range as factor of normalization, while \code{cvmbe}, \code{cvmae}, and \code{cvrmse}, use the observation average to normalize.
+    There are additional functions that normalize the MBE, MAE and RMSE values. \code{nmbe}, \code{nmae}, and \code{nrmse} use the  observation range as factor of normalization, while \code{cvmbe}, \code{cvmae}, and \code{cvrmse}, use the observation average to normalize.}
 
   \item{q1, q9}{Numeric, quantiles 0.1 and 0.9}
 }

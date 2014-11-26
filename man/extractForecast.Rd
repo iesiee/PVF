@@ -5,7 +5,7 @@
 \encoding{UTF-8}
 
 \title{
-Extract forecast with variability indexes
+Extract NWP variables forecast with variability indexes
 }
 
 \description{
