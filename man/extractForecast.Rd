@@ -9,11 +9,7 @@ Extract NWP variables forecast with variability indexes
 }
 
 \description{
-Build a time series with one or more WRF variables from a specified
-source for a time period at a defined location.
-The variable is quantified with the value at the location, the IDW
-interpolation, three terrain indexes (tri, tpi and rough) and one
-temporal index.
+Build a time series with one or more Numerical Weather Prediction variables from a specified remote source for a time period at a defined location. The variable is quantified with the value at the location, a spatial interpolation using nearby points, three spatial variability indexes, and one time variability index.
 }
 
 \usage{

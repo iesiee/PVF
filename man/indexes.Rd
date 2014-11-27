@@ -52,11 +52,11 @@ deviation by rows.
 }
 
 \value{
-A data.frame
+A \code{data.frame}
 }
 
 \references{
-Wilson.OConnell.ea2007
+Wilson, M. F., O’Connell, B., Brown, C., Guinan, J. C., & Grehan, A. J. (2007). Multiscale terrain analysis of multibeam bathymetry data for habitat mapping on the continental slope. Marine Geodesy, 30(1-2), 3-35.
 }
 
 \author{

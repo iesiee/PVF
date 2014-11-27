@@ -1,12 +1,16 @@
 \name{targetDiagram}
 \alias{targetDiagram}
 
+\encoding{UTF-8}
+
 \title{
 Target Diagrams
 }
+
 \description{
-Summary diagrams
+Target diagrams
 }
+
 \usage{
 
 targetDiagram(data, class = "",
@@ -21,9 +25,7 @@ targetDiagram(data, class = "",
 }
 \arguments{
 
-  \item{data}{A \code{data.frame} with these columns: nrmse (Root Mean
-    Square Error), nmbe (Mean Bias Error), sdm (Standard Deviation of
-    the model), sdo (Standard Deviation of observations)}
+  \item{data}{A \code{data.frame} with these columns: nrmse (Root Mean Square Error), nmbe (Mean Bias Error), sdm (Standard Deviation of the model), sdo (Standard Deviation of observations)}
 
   \item{class}{Character, the name of the variable that defines the
     panels of a trellis graphic.}
@@ -46,7 +48,9 @@ targetDiagram(data, class = "",
 }
 
 \details{
-TODO
+The Target Diagram is derived from the relation between the unbiased RMSE, MBE, and RMSE. In a Cartesian coordinate system, the x-axis represents the unbiased RMSE (variance of the error), and the y-axis represents the MBE. Therefore the distance between any point to the origin is equal to the RMSE. Because the unbiased RMSE is always positive, the left area of the coordinate system is empty with this scheme. With additional information this region may be also used: the unbiased RMSE is multiplied by the sign of the difference between the standard deviations of model and observations.
+
+The resulting diagram provides three different measures: whether the model overestimates or underestimates (positive or negative values of the MBE on the y-axis, respectively), whether the model standard deviation is larger or smaller than the standard deviation of the measurements (positive or negative values on the x-axis, respectively), and the error performance as quantified by the RMSE represented as the distance to the coordinates origin. This tool is particularly powerful when comparing competing models.
 }
 
 \value{
@@ -54,7 +58,8 @@ A trellis object.
 }
 
 \references{
-TODO: paper
+  Jolliff, J. K., Kindle, J. C., Shulman, I., Penta, B., Friedrichs, M. A., Helber, R., & Arnone, R. A. (2009). Summary diagrams for coupled hydrodynamic-ecosystem model skill assessment. Journal of Marine Systems, 76(1), 64-82.
+  
 }
 
 \author{
@@ -63,7 +68,7 @@ Oscar Perpiñán Lamigueiro
 
 \seealso{
   \code{\link{xyplot}}
-  \code{\link{radarDiagram}}
+  \code{\link{PVFstats}}
 }
 
 \examples{
