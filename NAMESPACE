@@ -58,8 +58,5 @@ export(
     'scenarioSet',
     'targetDiagram',
     'PVFstats',
-    'qqStats',
-    'hour',
-    'hourHalf',
-    'minute'
+    'qqStats'
     )
