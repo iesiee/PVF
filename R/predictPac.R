@@ -24,22 +24,12 @@ predictPac <- function(goal, history, id, nDays, method, lat, lon,...){
     if(method=='previous') stop('Cannot use method previous when goal
                                 is not inside history date limits!!!')
     
-    ## NWP variables
-    forecastTest <- predVarsLocal(seqDays=goal,...)
-    ## Sun geometry
-    sol <- as.zooI(calcSol(lat=lat,
-                           BTi=local2Solar(index(forecastTest), lon=lon)))
-    sol$Bo0[is.na(sol$Bo0)] <- 0
-    ## Hourly averages (necessary for Meteogalicia hourly forecast)
-    solH <- aggregate(sol[,c('AlS', 'AzS', 'Bo0')], by=hour, FUN='mean')
-    ## Merging 'forecastTest' and 'solH'
-    valsTest <- merge(forecastTest, solH)
-    ## Removing rows with NA values
-    valsTest <- valsTest[apply(valsTest, 1, function(x)!any(is.na(x))),]
+    ## NWP variables and sun geometry
+    valsTest <- predVarsLocal(seqDays=goal, sun = TRUE, ...)
+    valsTest <- na.omit(valsTest)
     ## Adding the hourly clearness index
     valsTest$kt <- valsTest$swflx.point/valsTest$Bo0
     valsTest$kt[!is.finite(valsTest$kt)] <- 0
-    
   }
   
   ## Select scenario for the test day
