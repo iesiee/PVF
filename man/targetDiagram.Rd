@@ -67,7 +67,7 @@ Oscar Perpiñán Lamigueiro
 }
 
 \seealso{
-  \code{\link{xyplot}}
+  \code{\link{xyplot}},
   \code{\link{PVFstats}}
 }
 

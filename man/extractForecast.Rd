@@ -15,9 +15,12 @@ Build a time series with one or more Numerical Weather Prediction variables from
 \usage{
 extractForecast(point, seqDays, vrbl,
                 src='meteogalicia',
-                remote=TRUE, dataDir='.', ...)
+                remote=TRUE, dataDir='.',
+                sun = FALSE, ...)
 
-predVarsLocal(point, seqDays, vrbls, mc.cores = 1, ...)
+predVarsLocal(point, seqDays, vrbls,
+              mc.cores = 1,
+              sun = TRUE, ...)
 }
 
 
@@ -27,17 +30,23 @@ predVarsLocal(point, seqDays, vrbls, mc.cores = 1, ...)
     \code{SpatialLines}, \code{Extent}, or a numeric vector representing
     cell numbers. Read the help page of \code{\link{extract}} for
     additional details.
-}
+  }
+  
   \item{seqDays}{Sequence of days defined by a \code{Date} object, or
     a character that can be coerced to a \code{Date}.
-}
+  }
+  
   \item{vrbl, vrbls}{Character. The name(s) of the variable(s) to retrieve. Inspect
     the help page of \code{\link{grepVar}} to know what variables are available in each service.
-}
+  }
+
+  \item{sun}{Logical, if \code{TRUE} sun geometry is computed (solar altitude, azimuth, and extraterrestrial irradiance) and included as additional variables.}
+
   \item{src}{Character, which service to use, 'meteogalicia', 'gfs',
           'openmeteo', 'nam' or 'rap'. Read the help page of
 	  \code{\link{getRaster}} for details.
-}
+	}
+	
   \item{remote}{Logical. If \code{TRUE} (default) data is downloaded
     from the remote service. If \code{FALSE} the \code{RasterBrick} is
     produced with the files available in the local folder.}
@@ -71,9 +80,7 @@ Marcelo Pinho Almeida and Oscar Perpiñán Lamigueiro
 }
 
 \seealso{
-  \code{\link{terrainIndex}}
-  \code{\link{getRasterDays}}
-  \code{\link{getPointRuns}}
+  \code{\link{terrainIndex}}, \code{\link{getRasterDays}}, \code{\link{getPointRuns}}, \code{\link{calcSol}}
 }
 
 \examples{}

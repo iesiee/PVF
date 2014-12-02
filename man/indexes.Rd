@@ -64,8 +64,7 @@ Marcelo Pinho Almeida and Oscar Perpiñán Lamigueiro
 }
 
 \seealso{
-  \code{\link{idw}}
-  \code{\link{terrain}}
+  \code{\link{idw}}, \code{\link{terrain}}
 }
 
 \examples{

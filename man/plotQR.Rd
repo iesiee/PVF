@@ -35,5 +35,9 @@ A trellis object.
 Oscar Perpiñán Lamigueiro and Marcelo Pinho Almeida.
 }
 
+\seealso{
+  \code{\link{targetDiagram}}
+}
+
 \examples{
 }

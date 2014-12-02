@@ -86,10 +86,10 @@ Marcelo Pinho Almeida and Oscar Perpiñán Lamigueiro
 }
 
 \seealso{
-  \code{\link{quantregForest}}
-  \code{\link{predict.quantregForest}}
-  \code{\link{zoo}}
-  \code{\link{calcSol}}
+  \code{\link{quantregForest}},
+  \code{\link{predict.quantregForest}},
+  \code{\link{zoo}},
+  \code{\link{calcSol}},
   \code{\link{local2Solar}}
 }
 

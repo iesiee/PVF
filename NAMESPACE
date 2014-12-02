@@ -36,7 +36,8 @@ import(quantregForest)
 importFrom(zoo,
            zoo,
            as.zoo,
-           index
+           index,
+           "index<-"
            )
 
 importFrom(xts,

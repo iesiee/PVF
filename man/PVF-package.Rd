@@ -42,9 +42,10 @@ Maintainer: Oscar Perpinan Lamigueiro <oscar.perpinan@gmail.com>
 \keyword{ package }
 
 \seealso{
-  \code{\link{meteoForecast-package}}
-  \code{\link{quantregForest}}
-  \code{\link{raster-package}}
-  \code{\link{zoo}}
+  \code{\link{meteoForecast-package}},
+  \code{\link{quantregForest}},
+  \code{\link{raster-package}},
+  \code{\link{zoo}},
+  \code{\link{calcSol}}
 }
 

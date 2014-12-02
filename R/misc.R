@@ -2,10 +2,8 @@
 point2lonlat <- function(point){
     if (is(point, "SpatialPoints")) {
         if (!isLonLat(point)) {
-            if (require(rgdal, quietly = TRUE)) 
-                point <- spTransform(point,
-                                     CRS("+proj=longlat +ellps=WGS84"))
-            else stop("`rgdal` is needed if `point` is projected.")
+            point <- spTransform(point,
+                                 CRS("+proj=longlat +ellps=WGS84"))
         }
         lon <- coordinates(point)[1]
         lat <- coordinates(point)[2]
