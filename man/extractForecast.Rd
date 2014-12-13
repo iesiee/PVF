@@ -25,11 +25,8 @@ predVarsLocal(point, seqDays, vrbls,
 
 
 \arguments{
-  \item{point}{point represented by a two-column matrix or data.frame,
-    or \code{SpatialPoints*}, \code{SpatialPolygons*},
-    \code{SpatialLines}, \code{Extent}, or a numeric vector representing
-    cell numbers. Read the help page of \code{\link{extract}} for
-    additional details.
+  \item{point}{point represented by a \code{SpatialPoints*} object, or a
+  numeric vector of length 2 (longitude, latitude), in degrees.
   }
   
   \item{seqDays}{Sequence of days defined by a \code{Date} object, or

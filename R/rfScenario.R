@@ -24,8 +24,10 @@ rfScenario <- function(history, id, nDays, method, typeRes, mc.cores=1,...){
     
     message(workDay)
     
-    pred <- predictPac(goal=workDay, history, id, nDays,
-                       method, mc.cores=mc.cores,...)
+    pred <- predictPac(goal=workDay, history = history,
+                       id = id, nDays = nDays,
+                       method = method, 
+                       mc.cores=mc.cores, ...)
     
     switch(typeRes,
            power = return(pred),

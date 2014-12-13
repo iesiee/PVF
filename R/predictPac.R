@@ -1,4 +1,4 @@
-predictPac <- function(goal, history, id, nDays, method, lat, lon,...){
+predictPac <- function(goal, history, id, nDays, method, point,...){
   
   goal <- as.Date(goal)
   
@@ -25,7 +25,8 @@ predictPac <- function(goal, history, id, nDays, method, lat, lon,...){
                                 is not inside history date limits!!!')
     
     ## NWP variables and sun geometry
-    valsTest <- predVarsLocal(seqDays=goal, sun = TRUE, ...)
+    valsTest <- predVarsLocal(point = point, seqDays=goal,
+                              sun = TRUE, ...)
     valsTest <- na.omit(valsTest)
     ## Adding the hourly clearness index
     valsTest$kt <- valsTest$swflx.point/valsTest$Bo0

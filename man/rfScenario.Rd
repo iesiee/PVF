@@ -19,7 +19,7 @@ different combinations of predictors and training set definition methods.
 \usage{
 rfPredict(test, history, nDays)
 
-predictPac(goal, history, id, nDays, method, lat, lon,...)
+predictPac(goal, history, id, nDays, method, point,...)
 
 rfScenario(history, id, nDays, method, typeRes, mc.cores=1,...)
 
@@ -49,8 +49,10 @@ scenarioSet(id, vals)
   }
 
   \item{typeRes}{Character, if \code{typeRes = 'power'} the function \code{rfScenario} provides intradaily results, and daily error statistics with \code{typeRes='stats'}}
-  
-  \item{lat, lon}{Numeric, latitude and longitude of the location in degrees.}
+
+  \item{point}{point represented by a \code{SpatialPoints*} object, or a
+  numeric vector of length 2 (longitude, latitude), in degrees.
+  }
 
   \item{mc.cores}{The number of cores to use, i.e. at most how many child processes will be run simultaneously.  Parallelization requires at least two cores. It relies on forking and hence is not available on Windows.}
 
