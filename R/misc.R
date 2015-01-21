@@ -26,7 +26,7 @@ sunGeometry <- function(point, forecast){
     ## Merge and Time Zone
     forecast <- merge(forecast, sol)
     attr(index(forecast), "tzone") <- "UTC"
-    forecast
+    return(forecast)
 }
 
 ## Dismiss minutes and seconds
