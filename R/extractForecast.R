@@ -1,4 +1,6 @@
-extractForecast <- function(point, seqDays, vrbls,
+extractForecast <- function(point, vrbls,
+                            start = Sys.Date(),
+                            end = Sys.Date(),
                             sun = FALSE,
                             aux.index = FALSE,
                             service = 'meteogalicia',
@@ -14,6 +16,11 @@ extractForecast <- function(point, seqDays, vrbls,
     point <- SpatialPoints(cbind(point[1], point[2]),
                            CRS(projLL))
   }
+  
+  ## Creates a sequence of days, from 'start' to 'end', without the
+  ## days that do not contain all the runs for all the NWP variables
+  seqDays <- checkDays(start = start, end = end, vars = vrbls,
+                       remote = remote, service = service)
   
   forecastList <- mclapply(vrbls, FUN=function(vrbl){
       
@@ -109,7 +116,7 @@ extractForecast <- function(point, seqDays, vrbls,
   ## Do we need to add sun geometry?
   if(sun){
     message('Calculating Sun Geometry ...')
-    sunGeometry(point, forecast)
+    forecast <- sunGeometry(point, forecast)
   } else { forecast }
   
 }
