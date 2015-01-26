@@ -1,4 +1,4 @@
-## Extract lonlat from a point
+## Extract lonlat from a point of class SpatialPoints
 point2lonlat <- function(point){
     if (is(point, "SpatialPoints")) {
         if (!isLonLat(point)) {
@@ -14,6 +14,7 @@ point2lonlat <- function(point){
     }
 }
 
+## Add sun geometry (AlS, AzS and Bo0) to a time series of other variables
 sunGeometry <- function(point, forecast){
     ## Sun geometry
     lonlat <- point2lonlat(point)
@@ -38,4 +39,6 @@ hour <- function(tt)as.POSIXct(trunc(tt, 'hours'))
 ## 01:32:24 --> 02:00:00
 hourHalf <- function(tt)as.POSIXct(trunc(tt+30*60, 'hours'))
 ## Dismiss seconds
+## 01:22:24 --> 01:22:00
+## 01:22:48 --> 01:22:00
 minute <- function(tt)as.POSIXct(trunc(tt, 'mins'))
