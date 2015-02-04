@@ -7,9 +7,9 @@ mm <- function(m, o) mean(m, na.rm = TRUE)
 sdo <- function(m, o) sd(o, na.rm=TRUE)
 sdm <- function(m, o) sd(m, na.rm=TRUE)
 
-mbe <- function(m, o) mean(o - m, na.rm=TRUE)
-mae <- function(m, o) mean(abs(o - m), na.rm=TRUE)
-rmse <- function(m, o) sqrt(mean((o - m)^2, na.rm=TRUE))
+mbe <- function(m, o) mean(m - o, na.rm=TRUE)
+mae <- function(m, o) mean(abs(m - o), na.rm=TRUE)
+rmse <- function(m, o) sqrt(mean((m - o)^2, na.rm=TRUE))
 
 nmbe <- function(m, o) mbe(m, o) / diff(range(o))
 cvmbe <- function(m, o) mbe(m, o) / mean(o, na.rm=TRUE)
