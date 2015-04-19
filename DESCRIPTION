@@ -1,13 +1,13 @@
 Package: PVF
 Type: Package
 Title: Forecast of Power and Ramps Produced by Grid-Connected PV Systems
-Version: 0.20
-Date: 2014-11-27
+Version: 0.21
+Date: 2015-04-19
 Authors@R: c(person("Marcelo", "Pinho Almeida", email= "marcelopa@iee.usp.br", role='aut'), person("Oscar", "Perpinan Lamigueiro", email="oscar.perpinan@gmail.com", role=c('cre', 'aut')))
 Description: Forecast of power and ramps produced by grid-connected PV systems
 URL: http://github.com/oscarperpinan/PVF
 BugReports: https://github.com/oscarperpinan/PVF/issues
 License: GPL-3
 Depends: quantregForest
-Imports: sp, raster, zoo, xts, meteoForecast, solaR, parallel, gstat, rgdal, lattice, latticeExtra
+Imports: sp, raster, zoo, xts, meteoForecast, solaR, parallel, gstat, rgdal, lattice, latticeExtra, tdr
 Suggests: rasterVis

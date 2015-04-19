@@ -23,8 +23,6 @@ This package implements methods for forecasting the AC power output of a PV  fol
     \item{\code{\link{predVarsLocal}} and \code{\link{extractForecast}} use the functions of the \code{meteoForecast} package to build a time series with one or more Numerical Weather Prediction variables from a specified remote source for a time period at a defined location. Each variable is quantified with the value at the location, a spatial interpolation using nearby locations, three spatial variability indexes (tri, tpi and rough) and one time variabiliy index.}
   }
 
-  Additionally \code{PVF} includes a graphical function to display the model performance results, \code{\link{targetDiagram}}, and a auxiliary function to calculate error statistics, \code{\link{PVFstats}}.
-
 }
 
 \author{

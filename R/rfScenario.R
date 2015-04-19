@@ -50,7 +50,7 @@ rfScenario <- function(history, id, nDays, method, typeRes, mc.cores=1,...){
                    ## Compute error statistics considering only rows
                    ## with Pac > 0 and q5 > 0
                    error <- with(pred[(pred$Pac > 0 | pred$q5 > 0),],
-                                 PVFstats(m = q5, o = Pac))
+                                 tdStats(m = q5, o = Pac))
                    ## Compute q1 vs Pac and q9 vs Pac
                    q1q9 <- with(pred[(pred$Pac > 0 | pred$q5 > 0),],
                                 qqStats(Pac, q1, q9))
