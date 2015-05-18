@@ -9,27 +9,42 @@ extractForecast <- function(point, vrbls,
                             mc.cores = 1,
                             ...){
   
+  
+  ####################
+  ## Some of the next methods use spTransform, that works only with SpatialPoints.
+  ## Assume longitude-latitude projection (point[1]=lon and point[2]=lat).
+  ####################
+  
   if(!is(point, 'SpatialPoints')){
-    ## Some of next methods use spTransform, that works only with SpatialPoints.
-    ## Assume longitude-latitude projection (point[1]=lon and point[2]=lat).
     projLL <- '+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0'
     point <- SpatialPoints(cbind(point[1], point[2]),
                            CRS(projLL))
   }
   
+  
+  ####################
   ## Creates a sequence of days, from 'start' to 'end', without the
   ## days that do not contain all the runs for all the NWP variables
+  ####################
+  
   seqDays <- checkDays(start = start, end = end, vars = vrbls,
                        remote = remote, service = service)
   
+  
+  ####################
+  ## Each element of 'forecastList' correspond to a different variable from 'vrbls'.
+  ## Parallel function mclapply is used.
+  ####################
   forecastList <- mclapply(vrbls, FUN=function(vrbl){
       
       message(paste('Calculations with', vrbl, '...'))
       
+      ## Value and IDW at the point of interest and spacial variability indexes.
+      ## Each element of 'fl' is one day.
       fl <- lapply(seqDays, FUN=function(d){
         
         if(aux.index){
-          message(paste('Calculating point, IDW and spatial index for', d, '...'))
+          message(paste('Calculating point, IDW and spatial indexes for', d, '...'))
         } else {
           message(paste('Calculating point and IDW for', d, '...'))
         }
@@ -57,7 +72,7 @@ extractForecast <- function(point, vrbls,
             
             ## Spatial variability with terrain indexes (using function 'terrainIndex')
             terrIdxVals <- t(sapply(unstack(forecastDay),
-                                    terrainIndex, point))
+                                    terrainIndex, point=point))
             
             ## Combine vals, idwVals and terrIdxVals
             zoo(data.frame(point=vals, idw=idwVals, terrIdxVals),
@@ -72,16 +87,15 @@ extractForecast <- function(point, vrbls,
           }
           
         } else {
-          ## Bad files result in the elimination of the
-          ## corresponding day
+          ## Bad files result in the elimination of the corresponding day
           NULL
         }
         
       })
       
-      ## Value and IDW at the point of interest and spacial variability indexes
       forecast <- do.call(rbind, fl)
       attr(index(forecast), "tzone") <- "UTC"
+      
       
       if(aux.index){
         
@@ -106,17 +120,26 @@ extractForecast <- function(point, vrbls,
       
       forecast <- na.omit(forecast)
       names(forecast) <- paste(vrbl, names(forecast), sep='.')
+      
       return(forecast)
       
   }, mc.cores=mc.cores)
-  
+    
   forecast <- do.call(cbind, forecastList)
-  attr(index(forecast), "tzone") <- "UTC"
+  attr(index(forecast), 'tzone') <- 'UTC'
 
+  
+  ####################
   ## Do we need to add sun geometry?
+  ####################
+  
   if(sun){
     message('Calculating Sun Geometry ...')
     forecast <- sunGeometry(point, forecast)
-  } else { forecast }
+  }
+  
+  
+  
+  return(forecast)
   
 }
