@@ -1,7 +1,6 @@
-### Choose a scenario with `id`, to filter
-### variables of the `vals` dataset
+## Choose a scenario with 'scnID' to filter variables of the 'vals' dataset
 
-scenarioSet <- function(id, vals){
+scenarioSet <- function(scnID, vals){
   colsIn <- c(S01 = '.',
               S02 = '.',
               S03 = 'Pac|point|idw|Bo0|AzS|AlS',
@@ -45,7 +44,7 @@ scenarioSet <- function(id, vals){
                S20 = NA)
   
   nms <- names(vals)
-  colsSet <- setdiff(grep(colsIn[id], nms), grep(colsOut[id], nms))
+  colsSet <- setdiff(grep(colsIn[scnID], nms), grep(colsOut[scnID], nms))
   vals[, colsSet]
   
 }
