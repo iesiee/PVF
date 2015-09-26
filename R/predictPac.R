@@ -1,6 +1,11 @@
 predictPac <- function(goal, history, id, nDays, method, point,...){
   
   goal <- as.Date(goal)
+
+  ## Pac must be the column #1
+  idxPac <- which('Pac' == names(history))
+  history <- cbind(Pac = history[, idxPac],
+                   history[, -idxPac])
   
   ## Select scenario for the predictor set
   scnData <- scenarioSet(id, history)
@@ -84,9 +89,9 @@ predictPac <- function(goal, history, id, nDays, method, point,...){
            N <- 'all'
          })
   
-  if(names(test)[1]=='Pac'){
-    
-    pred <- rfPredict(test[, -1], scnData, N)
+  if('Pac' %in% names(test)){
+    colsIn <- 'Pac' != names(test)
+    pred <- rfPredict(test[, colsIn], scnData, N)
     pred <- cbind(Pac = test$Pac, pred)
     
   } else {
