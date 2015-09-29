@@ -67,8 +67,8 @@ rfScenario <- function(history, id, nDays, method, typeRes, mc.cores=1,...){
   
   randForest <- do.call(rbind, randForestList)
   
-  if(typeRes=='stats') randForest$KTclass <- cut(randForest$KT,
-                                                 round(quantile(randForest$KT),2))
+  #if(typeRes=='stats') randForest$KTclass <- cut(randForest$KT,
+  #                                               round(quantile(randForest$KT),2))
   
   return(randForest)
   
