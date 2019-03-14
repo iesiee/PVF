@@ -4,6 +4,6 @@ PVF
 
 Non-parametric forecast of AC power produced by grid-connected PV systems, as described in this [paper](http://oscarperpinan.github.io/papers/Pinho.Perpinan.ea2014.pdf).
 
-This package has been developed in the framework of the European Project [PVCROPS](http://www.pvcrops.eu/pv-power-forecast-using-nonparametric-pv-model). 
+This package has been developed in the framework of the European Project [PVCROPS](https://cordis.europa.eu/project/rcn/105879/factsheet/es). 
 
 
